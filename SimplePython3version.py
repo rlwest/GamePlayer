@@ -213,18 +213,9 @@ class MyAgent(ACTR):
               vision_finst='state:finished',
               focus='code_seen',
               b_visual='YP'):
-        focus.set('done')
+        focus.set('YP')
         target='responce'
         content='RP-YP-3412'
-        motor.enter_response(target, content)
-
-    def RP_ZB(b_unit_task='unit_task:RP state:running',
-              vision_finst='state:finished',
-              focus='code_seen',
-              b_visual='ZB'):
-        focus.set('done')
-        target='responce'
-        content='RP-ZB-2143'
         motor.enter_response(target, content)
 
     def RP_FJ(b_unit_task='unit_task:RP state:running',
@@ -233,6 +224,15 @@ class MyAgent(ACTR):
         focus.set('done')
         target='responce'
         content='RP-FJ-3214'
+        motor.enter_response(target, content)
+
+    def RP_ZB(b_unit_task='unit_task:RP state:running',
+              vision_finst='state:finished',
+              focus='code_seen',
+              b_visual='ZB'):
+        focus.set('ZB')
+        target='responce'
+        content='RP-ZB-2143'
         motor.enter_response(target, content)
 
     def RP_WM(b_unit_task='unit_task:RP state:running',
