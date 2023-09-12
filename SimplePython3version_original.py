@@ -87,68 +87,12 @@ class MyAgent(ACTR):
         b_plan_unit.modify(state='running')
         print ('start first unit task')
 
-    def get_next_unit_task_RP_HW(b_plan_unit='state:running',
-                           b_unit_task='unit_task:RP state:finished type:ordered',
+    def get_next_unit_task(b_plan_unit='state:running',
+                           b_unit_task='unit_task:!finished state:finished type:ordered',
                            vision_finst='state:finished',
-                           b_context='planning_unit:RP'):
-        b_unit_task.set('unit_task:HW state:start type:ordered')
-        print ('start HW unit task')
-
-    def get_next_unit_task_RP_AK(b_plan_unit='state:running',
-                           b_unit_task='unit_task:HW state:finished type:ordered',
-                           vision_finst='state:finished',
-                           b_context='planning_unit:RP'):
-        b_unit_task.set('unit_task:AK state:start type:ordered')
-        print ('start AK unit task')
-
-    def get_next_unit_task_RP_End(b_plan_unit='state:running',
-                           b_unit_task='unit_task:AK state:finished type:ordered',
-                           vision_finst='state:finished',
-                           b_context='planning_unit:RP'):
-        b_unit_task.set('unit_task:finished state:start type:ordered')
-        print ('ended RP planning unit')
-
-    def get_next_unit_task_HW_RP(b_plan_unit='state:running',
-                           b_unit_task='unit_task:HW state:finished type:ordered',
-                           vision_finst='state:finished',
-                           b_context='planning_unit:HW'):
-        b_unit_task.set('unit_task:AK state:start type:ordered')
-        print ('start RP unit task')
-
-    def get_next_unit_task_HW_AK(b_plan_unit='state:running',
-                           b_unit_task='unit_task:RP state:finished type:ordered',
-                           vision_finst='state:finished',
-                           b_context='planning_unit:HW'):
-        b_unit_task.set('unit_task:AK state:start type:ordered')
-        print ('start AK unit task')
-
-    def get_next_unit_task_HW_End(b_plan_unit='state:running',
-                           b_unit_task='unit_task:AK state:finished type:ordered',
-                           vision_finst='state:finished',
-                           b_context='planning_unit:HW'):
-        b_unit_task.set('unit_task:finished state:start type:ordered')
-        print ('ended HW planning unit')
-
-    def get_next_unit_task_AK_HW(b_plan_unit='state:running',
-                           b_unit_task='unit_task:AK state:finished type:ordered',
-                           vision_finst='state:finished',
-                           b_context='planning_unit:AK'):
-        b_unit_task.set('unit_task:HW state:start type:ordered')
-        print ('start HW unit task')
-
-    def get_next_unit_task_AK_RP(b_plan_unit='state:running',
-                           b_unit_task='unit_task:HW state:finished type:ordered',
-                           vision_finst='state:finished',
-                           b_context='planning_unit:AK'):
-        b_unit_task.set('unit_task:RP state:start type:ordered')
-        print ('start RP unit task')
-
-    def get_next_unit_task_AK_End(b_plan_unit='state:running',
-                           b_unit_task='unit_task:RP state:finished type:ordered',
-                           vision_finst='state:finished',
-                           b_context='planning_unit:AK'):
-        b_unit_task.set('unit_task:finished state:start type:ordered')
-        print ('ended HW planning unit')
+                           b_visual='?unit_task'):
+        b_unit_task.set('unit_task:?unit_task state:start type:ordered')
+        print ('start second or subsequent unit task')
 
 
 ## these manage planning units that are finished ###################
@@ -158,7 +102,7 @@ class MyAgent(ACTR):
         print ('finished planning unit =');
         print (planning_unit)
         b_unit_task.set('stop')
-        b_context.modify(status='unoccupied', planning_unit='none')
+        b_context.modify(status='unoccupied')
         #############################
         choices = ['AK','RP','HW']
         x=random.choice(choices)
