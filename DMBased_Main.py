@@ -10,7 +10,7 @@ sys.path.append('Users/User/Documents/GitHub/GamePlayer/')
 
 import python_actr
 from random import randrange, uniform
-from SimplePython3version import MyAgent
+from DMBasedModel import MyAgent
 from Manager import Manager
 log = python_actr.log()
 #log=python_actr.log(html=True)
